@@ -15,6 +15,7 @@ URL: http://kde.org/
 License: GPL
 Group: Graphical desktop/KDE
 BuildRequires: cmake(ECM)
+BuildRequires: cmake(Qt6)
 BuildRequires: cmake(Qt6Network)
 BuildRequires: cmake(Qt6Qml)
 BuildRequires: cmake(Qt6QmlModels)
