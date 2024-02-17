@@ -1,12 +1,14 @@
 %define plasmaver %(echo %{version} |cut -d. -f1-3)
 %define stable %([ "$(echo %{version} |cut -d. -f2)" -ge 80 ] && echo -n un; echo -n stable)
-#define git 0
+%define git 20240217
+%define gitbranch Plasma/6.0
+%define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 
 Name: plasma6-thunderbolt
-Version: 5.93.0
+Version: 5.94.0
 Release: 1
 %if 0%{?git:1}
-Source0: https://invent.kde.org/plasma/plasma-thunderbolt/-/archive/master/plasma-thunderbolt-master.tar.bz2#/plasma-thunderbolt-%{git}.tar.bz2
+Source0: https://invent.kde.org/plasma/plasma-thunderbolt/-/archive/%{gitbranch}/plasma-thunderbolt-%{gitbranchd}.tar.bz2#/plasma-thunderbolt-%{git}.tar.bz2
 %else
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/plasma-thunderbolt-%{version}.tar.xz
 %endif
@@ -36,7 +38,7 @@ Requires: bolt
 Thunderbolt support for Plasma Desktop
 
 %prep
-%autosetup -p1 -n plasma-thunderbolt-%{?git:master}%{!?git:%{version}}
+%autosetup -p1 -n plasma-thunderbolt-%{?git:%{gitbranchd}}%{!?git:%{version}}
 %cmake \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
 	-G Ninja
