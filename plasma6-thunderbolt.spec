@@ -5,7 +5,7 @@
 %define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 
 Name: plasma6-thunderbolt
-Version: 6.0.0
+Version: 6.0.1
 Release: 1
 %if 0%{?git:1}
 Source0: https://invent.kde.org/plasma/plasma-thunderbolt/-/archive/%{gitbranch}/plasma-thunderbolt-%{gitbranchd}.tar.bz2#/plasma-thunderbolt-%{git}.tar.bz2
