@@ -13,7 +13,7 @@ Source0: https://invent.kde.org/plasma/plasma-thunderbolt/-/archive/%{gitbranch}
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/plasma-thunderbolt-%{version}.tar.xz
 %endif
 Summary: Thunderbolt support for Plasma Desktop
-URL: http://kde.org/
+URL: https://kde.org/
 License: GPL
 Group: Graphical desktop/KDE
 BuildRequires: cmake(ECM)
