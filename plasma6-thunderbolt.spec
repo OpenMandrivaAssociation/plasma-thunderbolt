@@ -6,7 +6,7 @@
 
 Name: plasma6-thunderbolt
 Version: 6.3.3
-Release: 1
+Release: 2
 %if 0%{?git:1}
 Source0: https://invent.kde.org/plasma/plasma-thunderbolt/-/archive/%{gitbranch}/plasma-thunderbolt-%{gitbranchd}.tar.bz2#/plasma-thunderbolt-%{git}.tar.bz2
 %else
