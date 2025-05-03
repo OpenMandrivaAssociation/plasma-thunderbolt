@@ -4,9 +4,9 @@
 %define gitbranch Plasma/6.0
 %define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 
-Name: plasma6-thunderbolt
+Name: plasma-thunderbolt
 Version: 6.3.4
-Release: 2
+Release: 3
 %if 0%{?git:1}
 Source0: https://invent.kde.org/plasma/plasma-thunderbolt/-/archive/%{gitbranch}/plasma-thunderbolt-%{gitbranchd}.tar.bz2#/plasma-thunderbolt-%{git}.tar.bz2
 %else
@@ -33,23 +33,15 @@ BuildRequires: cmake(KF6DBusAddons)
 BuildRequires: cmake(Qt6Gui)
 BuildRequires: cmake(KF6Notifications)
 Requires: bolt
+# Renamed after 6.0 2025-05-03
+%rename plasma6-thunderbolt
+
+BuildSystem:	cmake
+BuildOption:	-DBUILD_QCH:BOOL=ON
+BuildOption:	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
 
 %description
 Thunderbolt support for Plasma Desktop
-
-%prep
-%autosetup -p1 -n plasma-thunderbolt-%{?git:%{gitbranchd}}%{!?git:%{version}}
-%cmake \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
-	-G Ninja
-
-%build
-%ninja_build -C build
-
-%install
-%ninja_install -C build
-
-%find_lang %{name} --all-name --with-html
 
 %files -f %{name}.lang
 %{_libdir}/libkbolt.so
